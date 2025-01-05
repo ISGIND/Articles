@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "c235d91a-f2f6-423e-bdbf-d9c9b6368df5",
+		"name": "ArticlesCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14804990"
+	},
+	"item": [
+		{
+			"name": "GetAllArticles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://articles-439108180593.us-central1.run.app/api/v1/catalogs/articles",
+					"protocol": "https",
+					"host": [
+						"articles-439108180593",
+						"us-central1",
+						"run",
+						"app"
+					],
+					"path": [
+						"api",
+						"v1",
+						"catalogs",
+						"articles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetArticleById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://articles-439108180593.us-central1.run.app/api/v1/catalogs/articles/012ghi345",
+					"protocol": "https",
+					"host": [
+						"articles-439108180593",
+						"us-central1",
+						"run",
+						"app"
+					],
+					"path": [
+						"api",
+						"v1",
+						"catalogs",
+						"articles",
+						"012ghi345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateArticleById",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"descripcion\": \"Bolígrafo azul tinta gel Update2\",\r\n    \"modelo\": \"gel upda2e\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://articles-439108180593.us-central1.run.app/api/v1/catalogs/articles/012ghi345",
+					"protocol": "https",
+					"host": [
+						"articles-439108180593",
+						"us-central1",
+						"run",
+						"app"
+					],
+					"path": [
+						"api",
+						"v1",
+						"catalogs",
+						"articles",
+						"012ghi345"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
