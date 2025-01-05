@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: Swagger Article Catalog - OpenAPI 3.0
+  description: |-
+    This is a sample Article Catalog. Designed for a test.
+    
+    Some useful links:
+    - [The Article Catalog repository](https://github.com/ISGIND/Articles)
+    - [The source API definition for the Article Catalog](https://github.com/ISGIND/Articles/blob/master/openapi.yaml)
+  contact:
+    email: ivansanchez.g13@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+servers:
+  - url: https://articles-439108180593.us-central1.run.app/api/v1
+tags:
+  - name: articles
+    description: Operations about articles
+paths:
+  /catalogs/articles/{id}:
+    get:
+      tags:
+        - articles
+      summary: Get article by id
+      description: ''
+      operationId: getArticeById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+        '400':
+          description: Invalid id supplied
+        '404':
+          description: Article not found
+        '500':
+          description: Internal Server Error
+    patch:
+      tags:
+        - articles
+      summary: Update article
+      operationId: updateArticle
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Update an existent article in the catalog
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArticleUpdated'
+      responses:
+        '400':
+          description: Invalid username supplied
+        '404':
+          description: User not found
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    Article:
+      type: object
+      properties:
+        id:
+          type: string
+          maxLength: 10
+          example: '10sada0785'
+        nombre:
+          type: string
+          maxLength: 10
+          example: libreta
+        descripcion:
+          type: string
+          maxLength: 200
+          example: 'Libreta scribe 100 hojas'
+        precio:
+          type: number
+          multipleOf: 0.01
+          example: 10.15
+        modelo:
+          type: string
+          maxLength: 10
+          example: scribe
+    ArticleUpdated:
+      type: object
+      properties:
+        descripcion:
+          type: string
+          maxLength: 200
+          example: 'Libreta scribe 100 hojas'
+        modelo:
+          type: string
+          maxLength: 10
+          example: scribe
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+  requestBodies:
+    Articles:
+      description: Article object that needs to be added to the caatalog
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Article'
+   
